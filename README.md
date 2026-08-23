@@ -17,4 +17,4 @@ A simple To-Do List application made with Python.
 
 ## How to run
 
-Run the `utility.py` file.
+Run the `Main.py` file.
