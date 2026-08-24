@@ -1,4 +1,4 @@
-from variables import to_do_list, menu
+from variables import to_do_list
 
 #1 To Create a new List
 #2 To Add a new task in your List
@@ -16,16 +16,10 @@ def create_new_list():
                 continue
             to_do_list[name_list] = []
             print(f"The name of the new list is: {to_do_list.keys()}" )
-            option = input("Want to continue? (y/n):").lower()
-            if option == "y":
+            if loop_function():
                 continue
-            if option == "n":
-                print("Ok returning to the main menu")
-                menu
-                break
             else:
-                print("Invalid, please use Y or N")
-                continue
+                break
 
 def create_new_task():
     while True:
@@ -37,17 +31,10 @@ def create_new_task():
             print(f"The list {list_name} doesn't exist")
             continue
         to_do_list[list_name].append(task_name)
-
-        option = input("Want to continue? (y/n):").lower()
-        if option == "y":
+        if loop_function():
             continue
-        if option == "n":
-            print("Ok returning to the main menu")
-            menu
-            break
         else:
-            print("Invalid, please use Y or N")
-            continue
+            break
 
 def edit_task():
     while True:
@@ -65,17 +52,10 @@ def edit_task():
         index_task = to_do_list[list_name].index(ed_task)
         to_do_list[list_name][index_task] = new_name_task
         print(f"Now this is your new task: {to_do_list[list_name][index_task]} in the list: {to_do_list[list_name]}")
-
-        option = input("Want to continue? (y/n):").lower()
-        if option == "y":
+        if loop_function():
             continue
-        if option == "n":
-            print("Ok returning to the main menu")
-            menu
-            break
         else:
-            print("Invalid, please use Y or N")
-            continue
+            break
 
 def delete_task():
     while True:
@@ -92,17 +72,11 @@ def delete_task():
         index_task = to_do_list[list_name].index(del_task)
         to_do_list[list_name].pop(index_task)
         print(f"Now this is yours remainders task: {to_do_list[list_name]} in the list:")
-
-        option = input("Want to continue? (y/n):").lower()
-        if option == "y":
+        if loop_function():
             continue
-        if option == "n":
-            print("Ok returning to the main menu")
-            menu
-            break
         else:
-            print("Invalid, please use Y or N")
-            continue
+            break
+
 
 def delete_lists():
     while True:
@@ -113,17 +87,22 @@ def delete_lists():
             continue
         del to_do_list[del_list]
         print(f"Now this is yours remainders list: {to_do_list}")
-
-        option = input("Want to continue? (y/n):").lower()
-        if option == "y":
+        if loop_function():
             continue
-        if option == "n":
-            print("Ok returning to the main menu")
-            menu
-            break
         else:
-            print("Invalid, please use Y or N")
-            continue
+            break
+
 
 def view_all_list_and_keys():
         print(to_do_list)
+
+def loop_function():
+    while True:
+        option = input("Want to continue? (y/n):").lower()
+        if option == "y":
+            return True
+        elif option == "n":
+            print("Ok returning to the main menu")
+            return False
+        else:
+            print("Invalid, please use Y or N")
